@@ -1,9 +1,13 @@
-#setting up files and tasks
+import functions
+from bs4 import BeautifulSoup
+import schedule, time
 
-#Use a dictionary to store a product's current price and a price at which you'd be willing to buy them.
-#Every day, scrape the page for price changes.
-#If the price has changed and it's under your 'I'd buy that for a dollar' price, automate an email to be sent to yourself.
-#The email should contain:
-#A link to the product
-#A reminder of your desired price
-#The current price
+
+#From main.py schedule calls for the web_crawler functions, which calls for other functions as needed
+
+
+schedule.every(60).seconds.do(functions.web_crawler)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
